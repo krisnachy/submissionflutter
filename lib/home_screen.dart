@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:submission/model/champion_list.dart';
 import 'package:submission/detail_screen.dart';
@@ -5,6 +6,10 @@ import 'package:flutter_swiper/flutter_swiper.dart';
 import 'style.dart';
 
 class HomeScreen extends StatefulWidget {
+  final String displayName;
+
+  HomeScreen({this.displayName});
+
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
@@ -13,10 +18,9 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: gradientEnd,
+      backgroundColor: bgColor,
       body: SingleChildScrollView(
         child: Container(
-          decoration: homeBody,
           child: SafeArea(
             bottom: false,
             child: Column(
@@ -114,10 +118,11 @@ class _HomeScreenState extends State<HomeScreen> {
                                             style: role,
                                             textAlign: TextAlign.left,
                                           ),
-                                          Text(
+                                          AutoSizeText(
                                             char[index].champion,
                                             style: champion,
                                             textAlign: TextAlign.left,
+                                            maxLines: 2,
                                           ),
                                         ],
                                       ),
